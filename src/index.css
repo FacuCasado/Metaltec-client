@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+}
+
+:root {
+	font-size: 14px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+@layer components {
+	/* Buttons */
+	.btnPrimary {
+		@apply block w-full text-lg py-2 rounded-full text-text font-medium bg-gradient-to-tr from-amber-300 via-amber-400 to-amber-500 border border-amber-500 hover:bg-gradient-to-tr hover:from-amber-200 hover:via-amber-300 hover:to-amber-400 focus:outline-none transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed;
+	}
+
+	.btnPagination {
+		@apply inline-block w-full py-2 px-4 rounded-xl dark:text-text font-medium dark:font-normal bg-gradient-to-r from-fuchsia-700 to-pink-400 dark:bg-gradient-to-r dark:from-fuchsia-800 dark:to-pink-500 border border-fuchsia-400 dark:border-fuchsia-600 hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-pink-400 dark:hover:bg-gradient-to-r dark:hover:from-fuchsia-600 dark:hover:to-pink-400  focus:outline-none transition-colors duration-300 disabled:opacity-70 disabled:cursor-not-allowed;
+	}
+
+	.btnPaginationSelected {
+		@apply inline-block w-full py-2 px-4 rounded-xl dark:text-text font-medium dark:font-normal bg-gradient-to-r from-fuchsia-400 to-pink-300 dark:bg-gradient-to-r dark:from-fuchsia-500 dark:to-pink-400 border border-fuchsia-400 dark:border-fuchsia-600  focus:outline-none transition-colors duration-300 cursor-not-allowed;
+	}
+
+	/* Inputs */
+	/* inputs */
+	.input {
+		@apply h-8 px-4 py-4 w-full text-black border border-secondaryBorderLight dark:border-fuchsia-600 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-700 focus:border-transparent;
+	}
+
+	.inputError {
+		@apply h-8 px-4 py-4 w-full text-black bg-primaryLight dark:bg-white border border-red-500 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-red-700 focus:border-transparent;
+	}
+
+	.inputSuccess {
+		@apply h-8 px-4 py-4 w-full text-black border border-green-500 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-transparent;
+	}
+
+	/* inputs textarea */
+	.inputTextArea {
+		@apply block h-fit px-4 py-4 w-full text-black border border-secondaryBorderLight dark:border-fuchsia-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-700 focus:border-transparent;
+	}
+
+	.inputTextAreaError {
+		@apply block h-fit px-4 py-4 w-full text-black border border-red-500 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-red-700 focus:border-transparent;
+	}
+
+	.inputTextAreaSuccess {
+		@apply block h-fit px-4 py-4 w-full text-black border border-green-500 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-transparent;
+	}
+
+	/* inputs select */
+	.inputSelect {
+		@apply h-8 px-4 w-full text-black border border-secondaryBorderLight dark:border-fuchsia-600 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-700 focus:border-transparent;
+	}
+
+	.inputSelectError {
+		@apply h-8 px-4 w-full text-black border border-red-500 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-red-700 focus:border-transparent;
+	}
+
+	.inputSelectSuccess {
+		@apply h-8 px-4 w-full text-black border border-green-500 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-transparent;
+	}
+
+	/* Input file  PENDIENTE*/
+	.inputFile {
+		@apply file:w-full file:h-8 file:px-4 block w-full text-sm file:text-sm file:text-white file:rounded-full file:bg-gradient-to-r from-fuchsia-800 to-pink-500 file:border file:border-fuchsia-600 file:hover:font-semibold file:focus:outline-none file:transition-colors file:duration-300;
+	}
+
+	/* Form errors */
+	.errorMessage {
+		@apply text-errorTextLight dark:text-errorText block text-center mt-1 font-medium;
+	}
+
+	/* Links */
+	.link {
+		@apply text-fuchsia-600 dark:text-fuchsia-300 hover:text-fuchsia-800 hover:font-medium dark:hover:font-normal dark:hover:text-fuchsia-600 focus:outline-none transition-colors duration-300;
+	}
+
+	.navLink {
+		@apply text-lg font-medium text-fuchsia-800 dark:text-fuchsia-300 focus:outline-none transition-colors duration-300;
+	}
+
+	.dropDownItem {
+		@apply block px-4 py-2 hover:bg-gradient-to-r hover:from-fuchsia-700 hover:to-pink-400  dark:hover:bg-gradient-to-r dark:hover:from-fuchsia-800 dark:hover:to-pink-500 transition-colors duration-300;
+	}
+
+	.navLinkDropdown {
+		@apply text-lg hover:font-semibold focus:outline-none transition-colors duration-300;
+	}
+
+	/* Varios */
+	.step {
+		@apply flex bg-gradient-to-r from-fuchsia-700 to-pink-400 dark:from-fuchsia-800 dark:to-pink-500 border border-fuchsia-400 dark:border-fuchsia-600 rounded-tl-full rounded-br-full;
+	}
+
+	.floatBox {
+		@apply flex flex-col py-8 px-4 shadow bg-secondaryLight dark:bg-secondary rounded-xl border border-secondaryBorderLight dark:border-secondaryBorder;
+	}
+}
