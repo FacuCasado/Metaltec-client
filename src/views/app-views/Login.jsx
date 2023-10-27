@@ -25,6 +25,7 @@ function Login() {
 	}, [isLogin, navigate]);
 
 	const handleSubmit = (values, { setSubmitting, resetForm }) => {
+		setSubmitting(true);
 		dispatch(singIn(values));
 		setSubmitting(false);
 		resetForm();
@@ -45,7 +46,7 @@ function Login() {
 					onSubmit={handleSubmit}
 					validationSchema={validationSchema}
 				>
-					{({ isSubmitting }) => (
+					{({ isSubmitting, touched, errors }) => (
 						<Form className="flex flex-col justify-center items-center">
 							<div className="flex my-2">
 								<label
@@ -61,11 +62,13 @@ function Login() {
 									placeholder="Email aqui"
 								/>
 							</div>
-							<ErrorMessage
-								name="email"
-								component="div"
-								className="text-red-500 min-h-5 max-h-5"
-							/>
+							{touched.email && (
+								<ErrorMessage
+									name="email"
+									component="div"
+									className="text-red-500 min-h-5 max-h-5"
+								/>
+							)}
 
 							<div className="flex my-2">
 								<label
@@ -81,15 +84,23 @@ function Login() {
 									placeholder="Contraseña aqui"
 								/>
 							</div>
-							<ErrorMessage
-								name="password"
-								component="div"
-								className="text-red-500"
-							/>
+							{touched.password && (
+								<ErrorMessage
+									name="password"
+									component="div"
+									className="text-red-500"
+								/>
+							)}
 							<button
 								type="submit"
 								className="btnPrimary"
-								disabled={isSubmitting}
+								disabled={isSubmitting || !!Object.keys(errors).length}
+								style={{
+									cursor:
+										isSubmitting || !!Object.keys(errors).length
+											? 'not-allowed'
+											: 'pointer',
+								}}
 							>
 								Iniciar sesión
 							</button>
