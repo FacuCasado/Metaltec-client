@@ -1,5 +1,5 @@
 import { USER_SIGN_IN } from './userActions';
-import { GET_RAW } from './stockAction';
+import { GET_RAW, POST_NEWENTRY } from './stockAction';
 
 const initialState = {
 	//user state
@@ -16,6 +16,10 @@ function rootReducer(state = initialState, action) {
 			return { ...state, isLogin: true, userData: action.payload };
 		case GET_RAW:
 			return { ...state, rawStock: action.payload };
+		case POST_NEWENTRY:
+			return {
+				...state,
+			};
 		default:
 			return state;
 	}

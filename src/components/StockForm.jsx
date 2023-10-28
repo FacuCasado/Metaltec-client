@@ -1,8 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { bulletsInfo } from '../../const';
 import * as Yup from 'yup';
-import { useEffect, useState } from 'react';
+import { postNewStock } from '../Redux/stockAction';
 
 const validationSchema = Yup.object().shape({
 	name: Yup.string()
@@ -19,29 +19,34 @@ const validationSchema = Yup.object().shape({
 		.required('Este campo es obligatorio')
 		.test(
 			'usedRaw',
-			'El valor ingresado no puede ser mayor al stock',
+			'El valor debe ser menor a la cantidad disponible',
 			function (value) {
 				const { rawStock } = this.parent;
-				return rawStock >= value;
+				console.log(this.parent);
+				return value <= rawStock;
 			}
 		),
 });
 
 function StockForm() {
+	const dispatch = useDispatch();
 	const rawStock = useSelector((state) => state.rawStock);
 
-	const [initialValues, setInitialValues] = useState({
+	const initialValues = {
 		name: '',
 		amount: 0,
 		usedRaw: 0,
-		rawStock: 0,
-	});
+		rawStock: rawStock.available,
+	};
 
-	useEffect(() => {
-		setInitialValues({ ...initialValues, rawStock: rawStock.available });
-	}, [rawStock]);
-
-	const handleSubmit = (values, { setSubmitting, resetForm }) => {};
+	const handleSubmit = (values, { setSubmitting, resetForm }) => {
+		values.unitPrice = bulletsInfo.find(
+			(bull) => bull.name === values.name
+		).unitPrice;
+		dispatch(postNewStock(values));
+		setSubmitting(false);
+		resetForm();
+	};
 
 	return (
 		<div>
@@ -50,6 +55,7 @@ function StockForm() {
 				initialValues={initialValues}
 				onSubmit={handleSubmit}
 				validationSchema={validationSchema}
+				enableReinitialize={true}
 			>
 				{({ isSubmitting, touched, errors }) => (
 					<Form>
