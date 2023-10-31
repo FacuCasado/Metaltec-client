@@ -19,3 +19,11 @@ export const singIn = (payload) => {
 		}
 	};
 };
+
+export const singOut = () => {
+	return (dispatch) => {
+		dispatch({
+			type: USER_SIGN_OUT,
+		});
+	};
+};
