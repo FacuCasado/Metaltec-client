@@ -13,6 +13,9 @@ export default {
 			sans: ['Montserrat', 'sans-serif'],
 		},
 		extend: {
+			fontFamily: {
+				courier: ['Courier Prime', 'monospace'],
+			},
 			colors: {
 				// Dark:
 				text: '#44403c',

@@ -36,7 +36,7 @@ function Login() {
 			style={{ backgroundImage: `url(${bgImage})` }}
 		>
 			<div className="bg-secondary m-1 p-5 rounded-xl text-text">
-				<h1 className="text-9xl text-center mb-8">{text}</h1>
+				<h1 className="text-9xl text-center mb-8 font-courier">{text}</h1>
 				<div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300"></div>
 				<Formik
 					initialValues={{
